@@ -1,4 +1,6 @@
+import os
 import toml
+import glob
 from discord.ext.commands import Bot
 
 
@@ -12,10 +14,13 @@ async def on_ready():
     ignored_channels = config['Ignored-Channels']
     consenting_users = config['Consenting-Users']
     guild = bot.get_guild(guild_id)
+    raw_data_path = 'data/raw'
+    for file in glob.glob(f'{raw_data_path}/*.txt'):
+        os.remove(file)
     for text_channel in guild.text_channels:
         if text_channel.id not in ignored_channels:
             print(f'Scraping #{text_channel}')
-            with open(f'data/raw/{text_channel.id}.txt', 'a', encoding='utf-8') as output_file:
+            with open(f'{raw_data_path}/raw/{text_channel.id}.txt', 'a', encoding='utf-8') as output_file:
                 for message in await text_channel.history(limit=None).flatten():
                     author_id = message.author.id
                     if author_id in consenting_users:
@@ -26,4 +31,5 @@ async def on_ready():
 
 
 if __name__ == '__main__':
+    os.makedirs('data/raw/', exist_ok=True)
     bot.run(config['Bot-Token'])

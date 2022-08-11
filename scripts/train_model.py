@@ -5,6 +5,9 @@ import gpt_2_simple as gpt
 if __name__ == '__main__':
     train = True
     model_name = '124M'
+    for folder in ['checkpoint/', 'models/', 'samples']:
+        if os.path.isdir(folder):
+            os.rmdir(folder)
     file_name = 'data/formatted/discord.txt'
     if not os.path.isdir(os.path.join('models', model_name)):
         print(f'Downloading {model_name} model...')

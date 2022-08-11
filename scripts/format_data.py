@@ -1,11 +1,16 @@
 import re
+import os
 import glob
 import cleantext
 
 
 if __name__ == '__main__':
+    os.makedirs('data/formatted/', exist_ok=True)
+    output_file_name = 'data/formatted/discord.txt'
+    if os.path.exists(output_file_name):
+        os.remove(output_file_name)
     for filepath in glob.iglob('data/raw/*.txt'):
-        with open('data/formatted/discord.txt', 'a', encoding='UTF8') as output:
+        with open(output_file_name, 'a', encoding='UTF8') as output:
             with open(filepath, encoding='UTF8') as mini_file:
                 for line in mini_file.readlines():
                     # https://www.reddit.com/r/Discord_Bots/comments/iicffv/if_anyone_needs_regex_to_match_an_emote_mention/

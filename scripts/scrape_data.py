@@ -38,6 +38,7 @@ async def on_ready():
 
 
 if __name__ == '__main__':
+    # https://stackoverflow.com/a/70758881
     if platform.system() == 'Windows':
         asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
     os.makedirs('data/raw/', exist_ok=True)

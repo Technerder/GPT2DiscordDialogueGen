@@ -1,0 +1,4 @@
+toml==0.10.2
+clean-text==0.6.0
+discord.py==1.7.3
+gpt-2-simple==0.8.1

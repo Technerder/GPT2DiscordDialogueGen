@@ -1,0 +1,22 @@
+# The ID of the Discord guild to scrape messages from
+Guild-ID = 000000000000000000
+
+# The Discord bot token
+Bot-Token = ""
+
+# The URL of the Discord webhook
+Webhook-URL = ""
+
+# The integer ID's of the Discord channel's that should not be scraped
+Ignored-Channels = [
+    000000000000000000,
+    000000000000000000,
+    000000000000000000
+]
+
+# The integer ID's of all users who have consented to having their messages scraped
+Consenting-Users = [
+    000000000000000000,
+    000000000000000000,
+    000000000000000000
+]

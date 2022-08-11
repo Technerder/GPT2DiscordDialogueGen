@@ -1,10 +1,12 @@
 import os
+import toml
 import gpt_2_simple as gpt
 
 
 if __name__ == '__main__':
     train = True
     model_name = '124M'
+    config = toml.load('../config.toml')
     for folder in ['checkpoint/', 'models/', 'samples']:
         if os.path.isdir(folder):
             os.rmdir(folder)
@@ -14,7 +16,7 @@ if __name__ == '__main__':
         gpt.download_gpt2(model_name=model_name)
     sess = gpt.start_tf_sess()
     if train:
-        gpt.finetune(sess, file_name, model_name=model_name, steps=10000, save_every=1000)
+        gpt.finetune(sess, file_name, model_name=model_name, steps=config['Train-Step-Count'])
     else:
         gpt.load_gpt2(sess)
     print(gpt.generate(sess))

@@ -18,4 +18,4 @@ if __name__ == '__main__':
                     line = re.sub("<(?::\w+:|@!*&*|#)[0-9]+>", '', line)
                     line = cleantext.clean(line, fix_unicode=True, lower=False, no_emoji=True, no_urls=True, replace_with_url='')
                     output.write(f'{line}\n')
-    print('Formatting complete!')
+    print('done!')

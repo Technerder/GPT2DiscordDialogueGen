@@ -1,6 +1,8 @@
 import os
 import toml
 import glob
+import asyncio
+import platform
 from discord.ext.commands import Bot
 
 
@@ -36,8 +38,7 @@ async def on_ready():
 
 
 if __name__ == '__main__':
+    if platform.system() == 'Windows':
+        asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
     os.makedirs('data/raw/', exist_ok=True)
-    try:
-        bot.run(config['Bot-Token'])
-    except RuntimeError:
-        pass
+    bot.run(config['Bot-Token'])

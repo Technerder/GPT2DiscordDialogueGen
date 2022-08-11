@@ -20,6 +20,9 @@ For the Discord bot to work you'll need to go through the following steps in ord
 
 ### Scrape Messages
 This script will spin up the Discord bot and scrape all messages from all users in the `Consenting-Users` in all but the `Ignored-Channels` channels.
+
+If you get a `Scraping finished, 49981 messages were scraped!` message but also get a `RuntimeError: Event loop is closed` error you can safely ignore it (its a bug caused by `https://github.com/aio-libs/aiohttp/issues/4324`?)
+
 - `python scrape_data.py`
 
 ### Format Messages
@@ -32,6 +35,7 @@ This script will train the model on all messages the bot managed to scrape. This
 
 ### Run the bot
 - `python bot.py`
+- To generate dialogue go into any text channel the bot has access to and type `!generate <temp> <length>` where `temp` is a decimal number between 0 and 1, and `length` being the length of the dialogue in words.  
 
 # Common Issues / Notes
 - On Linux/Mac you might need to substitute `python` with `python3` and `pip` with `pip3` for some commands

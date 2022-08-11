@@ -20,7 +20,7 @@ async def on_ready():
     for text_channel in guild.text_channels:
         if text_channel.id not in ignored_channels:
             print(f'Scraping #{text_channel}')
-            with open(f'{raw_data_path}/raw/{text_channel.id}.txt', 'a', encoding='utf-8') as output_file:
+            with open(f'{raw_data_path}/{text_channel.id}.txt', 'a', encoding='utf-8') as output_file:
                 for message in await text_channel.history(limit=None).flatten():
                     author_id = message.author.id
                     if author_id in consenting_users:

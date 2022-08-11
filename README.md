@@ -6,13 +6,14 @@ The code is terrible but the bot makes people laugh so its gotta be decent
 - [git](https://git-scm.com/) - Cloning the repo
 
 # Setup
-1. `conda create test-env`
+1. `conda create --name test-env`
 2. `conda activate test-env`
 3. `conda install pytorch cudatoolkit=11.3.1 cudnn=8.2.1`
 4. `git clone https://github.com/Technerder/GPT2DiscordDialogueGen`
 5. `cd GPT2DiscordDialogueGen`
 6. `pip install -r requirements.txt`
-7. Populate all fields in the `config.toml` file
+7. populate all fields in the `config.toml` file
+8. `cd scripts`
 
 # Running
 For the Discord bot to work you'll need to go through the following steps in order

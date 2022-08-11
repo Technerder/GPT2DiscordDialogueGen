@@ -9,6 +9,7 @@ if __name__ == '__main__':
     output_file_name = 'data/formatted/discord.txt'
     if os.path.exists(output_file_name):
         os.remove(output_file_name)
+    print('Beginning to format data... ', end='')
     for filepath in glob.iglob('data/raw/*.txt'):
         with open(output_file_name, 'a', encoding='UTF8') as output:
             with open(filepath, encoding='UTF8') as mini_file:
@@ -17,3 +18,4 @@ if __name__ == '__main__':
                     line = re.sub("<(?::\w+:|@!*&*|#)[0-9]+>", '', line)
                     line = cleantext.clean(line, fix_unicode=True, lower=False, no_emoji=True, no_urls=True, replace_with_url='')
                     output.write(f'{line}\n')
+    print('Formatting complete!')

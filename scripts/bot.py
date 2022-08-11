@@ -12,11 +12,13 @@ class DialogueGen(Cog):
         self.webhook_url = webhook_url
         self.user_cache = {}
         self.sess = gpt2.start_tf_sess()
+        print('Loading gpt2 model... ', end='')
         gpt2.load_gpt2(self.sess)
+        print('Done!')
 
     @Cog.listener()
     async def on_ready(self):
-        print('Ready!')
+        print('Bot is now ready!')
 
     @Cog.listener()
     async def on_command_error(self, error):

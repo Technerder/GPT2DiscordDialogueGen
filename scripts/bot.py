@@ -39,13 +39,13 @@ class DialogueGen(Cog):
                     # GPT2 is generating lines that don't begin with `<name>:` which
                     # breaks the string splitting which is why this entire try block exists
                     try:
+                        data = line.split(':')  # this line will probably cause some errors
                         user_id = int(data[0])
                         if user_id not in self.user_cache:
                             user = await self.bot.fetch_user(user_id)
                             user_avatar_url = user.avatar_url
                             user_name = user.name
                             self.user_cache[user_id] = (user_name, user_avatar_url)
-                        data = line.split(':')  # this line will probably cause some errors
                         name, avatar_url = self.user_cache[int(data[0])]
                         bot_text = line.replace(f'{name}:', '')
                         await webhook.send(content=bot_text, username=name, avatar_url=avatar_url)

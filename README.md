@@ -43,3 +43,6 @@ This script will train the model on all messages the bot managed to scrape. This
 
 # Todo
 - Dockerize the entire repository (probably with [nvidia-docker](https://github.com/NVIDIA/nvidia-docker))
+- Use a proper logging library instead of just using `print`
+- Swap over project to use the newer [aitextgen](https://github.com/minimaxir/aitextgen)
+- Make README look better

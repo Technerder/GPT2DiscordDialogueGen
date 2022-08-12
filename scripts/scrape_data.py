@@ -32,10 +32,7 @@ async def on_ready():
                             output_file.write(f'{author_id}:{text}\n')
                             scraped_message_count += 1
     print(f'Scraping finished, {scraped_message_count} messages were scraped!')
-    try:
-        await bot.close()
-    except RuntimeError:
-        pass
+    await bot.close()
 
 
 if __name__ == '__main__':

@@ -36,7 +36,7 @@ class DialogueGen(Cog):
                 webhook = Webhook.from_url(self.webhook_url, adapter=AsyncWebhookAdapter(session))
                 for line in script.split('\n'):
                     # Not quite sure what's causing this issue but if I had to guess
-                    # GPT2 is generating lines that don't begin with `<name>:` which
+                    # GPT2 is generating lines that don't begin with `<id>:` which
                     # breaks the string splitting which is why this entire try block exists
                     try:
                         line_data = line.split(':', 1)

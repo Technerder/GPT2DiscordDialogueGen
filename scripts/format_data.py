@@ -9,7 +9,7 @@ if __name__ == '__main__':
     output_file_name = 'data/formatted/discord.txt'
     if os.path.exists(output_file_name):
         os.remove(output_file_name)
-    print('Beginning to format data... ', end='')
+    print('Beginning to format data.')
     for filepath in glob.iglob('data/raw/*.txt'):
         with open(output_file_name, 'a', encoding='UTF8') as output:
             with open(filepath, encoding='UTF8') as mini_file:
@@ -17,7 +17,7 @@ if __name__ == '__main__':
                     # https://www.reddit.com/r/Discord_Bots/comments/iicffv/if_anyone_needs_regex_to_match_an_emote_mention/
                     line = re.sub("<(?::\w+:|@!*&*|#)[0-9]+>", '', line)
                     line = cleantext.clean(line, fix_unicode=True, lower=False, no_emoji=True, no_urls=True, replace_with_url='')
-                    line_message = line.split(':', 1)[1].strip()
-                    if line_message:
+                    # Only save lines with text
+                    if line.split(':', 1)[1].strip():
                         output.write(f'{line}\n')
-    print('done!')
+    print('Formatting complete!')

@@ -1,8 +1,6 @@
 import os
 import toml
 import glob
-import asyncio
-import platform
 from discord.ext.commands import Bot
 
 
@@ -34,12 +32,12 @@ async def on_ready():
                             output_file.write(f'{author_id}:{text}\n')
                             scraped_message_count += 1
     print(f'Scraping finished, {scraped_message_count} messages were scraped!')
-    await bot.close()
+    try:
+        await bot.close()
+    except RuntimeError:
+        pass
 
 
 if __name__ == '__main__':
-    # https://stackoverflow.com/a/70758881
-    if platform.system() == 'Windows':
-        asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
     os.makedirs('data/raw/', exist_ok=True)
     bot.run(config['Bot-Token'])

@@ -1,6 +1,9 @@
 # Amount of steps the model should be trained for
 Train-Step-Count = 1000
 
+# Base Model Name
+Base-Model-Name = "124M"
+
 # The ID of the Discord guild to scrape messages from
 Guild-ID = 000000000000000000
 

@@ -46,8 +46,8 @@ class DialogueGen(Cog):
                             user_avatar_url = user.avatar_url
                             user_name = user.name
                             self.user_cache[user_id] = (user_name, user_avatar_url)
-                        name, avatar_url = self.user_cache[int(data[0])]
-                        bot_text = line.replace(f'{name}:', '')
+                        name, avatar_url = self.user_cache[user_id]
+                        bot_text = line.replace(f'{user_id}:', '')  # this can be improved
                         await webhook.send(content=bot_text, username=name, avatar_url=avatar_url)
                     except Exception as e:
                         print(f'Exception occurred: {e}', e)

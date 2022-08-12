@@ -21,7 +21,7 @@ For the Discord bot to work you'll need to go through the following steps in ord
 ### Scrape Messages
 This script will spin up the Discord bot and scrape all messages from all users in the `Consenting-Users` in all but the `Ignored-Channels` channels.
 
-If you get a `Scraping finished, 49981 messages were scraped!` message but also get a `RuntimeError: Event loop is closed` error you can safely ignore it (its a bug caused by `https://github.com/aio-libs/aiohttp/issues/4324`?)
+If you get a `Scraping finished, <x> messages were scraped!` message but also get a `RuntimeError: Event loop is closed` error you can safely ignore it (its a bug caused by `https://github.com/aio-libs/aiohttp/issues/4324`?)
 
 - `python scrape_data.py`
 

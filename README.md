@@ -8,7 +8,7 @@ The code is terrible but the bot makes people laugh so its gotta be decent
 # Setup
 1. `conda create --name test-env`
 2. `conda activate test-env`
-3. `conda install pytorch cudatoolkit=11.3.1 cudnn=8.2.1`
+3. `conda install cudatoolkit=11.3.1 cudnn=8.2.1`
 4. `git clone https://github.com/Technerder/GPT2DiscordDialogueGen`
 5. `cd GPT2DiscordDialogueGen`
 6. `pip install -r requirements.txt`

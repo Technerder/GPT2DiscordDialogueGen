@@ -17,5 +17,7 @@ if __name__ == '__main__':
                     # https://www.reddit.com/r/Discord_Bots/comments/iicffv/if_anyone_needs_regex_to_match_an_emote_mention/
                     line = re.sub("<(?::\w+:|@!*&*|#)[0-9]+>", '', line)
                     line = cleantext.clean(line, fix_unicode=True, lower=False, no_emoji=True, no_urls=True, replace_with_url='')
-                    output.write(f'{line}\n')
+                    line_message = line.split(':', 1)[1].strip()
+                    if line_message:
+                        output.write(f'{line}\n')
     print('done!')

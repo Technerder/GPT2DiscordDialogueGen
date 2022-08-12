@@ -12,9 +12,9 @@ class DialogueGen(Cog):
         self.webhook_url = webhook_url
         self.user_cache = {}
         self.sess = gpt2.start_tf_sess()
-        print('Loading gpt2 model... ', end='')
+        print('Loading model... ')
         gpt2.load_gpt2(self.sess)
-        print('Done!')
+        print('Finished loading model!')
 
     @Cog.listener()
     async def on_ready(self):
@@ -39,18 +39,18 @@ class DialogueGen(Cog):
                     # GPT2 is generating lines that don't begin with `<name>:` which
                     # breaks the string splitting which is why this entire try block exists
                     try:
-                        data = line.split(':')  # this line will probably cause some errors
-                        user_id = int(data[0])
-                        if user_id not in self.user_cache:
-                            user = await self.bot.fetch_user(user_id)
-                            user_avatar_url = user.avatar_url
-                            user_name = user.name
-                            self.user_cache[user_id] = (user_name, user_avatar_url)
-                        name, avatar_url = self.user_cache[user_id]
-                        bot_text = line.replace(f'{user_id}:', '')  # this can be improved
-                        await webhook.send(content=bot_text, username=name, avatar_url=avatar_url)
+                        line_data = line.split(':', 1)
+                        user_id, bot_text = int(line_data[0]), line_data[1][:2000]
+                        if bot_text:
+                            if user_id not in self.user_cache:
+                                user = await self.bot.fetch_user(user_id)
+                                user_avatar_url = user.avatar_url
+                                user_name = user.name
+                                self.user_cache[user_id] = (user_name, user_avatar_url)
+                            name, avatar_url = self.user_cache[user_id]
+                            await webhook.send(content=bot_text, username=name, avatar_url=avatar_url)
                     except Exception as e:
-                        print(f'Exception occurred: {e}', e)
+                        print(f'Exception occurred: {e}')
             await ctx.send('-------------------------- End Response --------------------------')
 
 

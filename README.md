@@ -30,10 +30,6 @@ Before you can run the bot you'll want to edit the `config.toml` file to include
 # users in the `Consenting-Users` in all but the `Ignored-Channels` channels.
 python3 scrape_data.py
 
-# This script will spin up the Discord bot and scrape all messages from all 
-# users in the `Consenting-Users` in all but the `Ignored-Channels` channels.
-python3 scrape_data.py
-
 # This script will format all messages in the files within the `scripts/data/raw` 
 # and combine them into a single file to train the model off
 python3 format_data.py
